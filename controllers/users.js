@@ -4,7 +4,7 @@ var multer = require('multer')
 var cv = require('opencv')
 var storage = multer.diskStorage({
   destination: function(req,file,cb){
-    cb(null,"/Users/Rahul/Google Drive/Personal_Projects/node_face_middle_server/controllers/upload")
+    cb(null,"./upload")
   },
   filename: function(req,file,cb){
     cb(null,"auth-face" + Date.now() + ".png")
@@ -35,7 +35,7 @@ router.post('/upload', upload.single('auth-face'), function(req, res) {
  var trainData = [];
  for(var i = 1;i<9;i++)
  {
-   cv.readImage("/Users/Rahul/Desktop/train/" + i + ".jpg",function(err,im){
+   cv.readImage("../train/" + i + ".jpg",function(err,im){
      //im.convertGrayscale();
      //im.save("/Users/Rahul/Desktop/train/g" + i + ".pgm");
      im.cvtColor("CV_BGR2GRAY");
@@ -47,7 +47,7 @@ router.post('/upload', upload.single('auth-face'), function(req, res) {
 
  }
 
-  cv.readImage("/Users/Rahul/Google Drive/Personal_Projects/node_face_middle_server/controllers/upload/" + req.file.filename, function(err, im){
+  cv.readImage("./upload/" + req.file.filename, function(err, im){
   // im.detectObject(cv.FACE_CASCADE, {}, function(err, faces){
   //   for (var i=0;i<faces.length; i++){
   //     var x = faces[i]
