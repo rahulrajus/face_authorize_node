@@ -7,6 +7,7 @@ install dependencies using:
  npm install
 ```
 Place training images in the train folder. Format is #.jpg (Ex. 1.jpg,2.jpg,3.jpg,etc.). As of now, you can only train on one face.
+
 Start server:
 ```
  node app.js
