@@ -1,6 +1,7 @@
 var express = require('express')
   , router = express.Router()
 var multer = require('multer')
+var autoReap  = require('multer-autoreap');
 var cv = require('opencv')
 var storage = multer.diskStorage({
   destination: __dirname + '/upload/',
@@ -8,8 +9,7 @@ var storage = multer.diskStorage({
     cb(null,"auth-face" + Date.now() + ".png")
   }
 });
-var upload = multer({storage: storage})
-
+var upload = multer({storage: storage});
 //
 // router.get('/', function(req, res) {
 // 	res.json({'users':'ALL'});
@@ -27,10 +27,12 @@ var upload = multer({storage: storage})
 //
 //
 // }
+
 router.post('/upload', upload.single('auth-face'), function(req, res) {
   console.log(String(req))
  var faces;
  var trainData = [];
+
  for(var i = 1;i<9;i++)
  {
    cv.readImage(__dirname + '/../train/' + i + ".jpg",function(err,im){
@@ -57,7 +59,9 @@ router.post('/upload', upload.single('auth-face'), function(req, res) {
 
     //im.save('/Users/Rahul/Google Drive/Personal_Projects/node_face_middle_server/controllers/results/test.png');
     im.cvtColor("CV_BGR2GRAY");
+
     res.json({request:{image: req.file.filename,result:facerec.predictSync(im)}})
+
 
 })
 
