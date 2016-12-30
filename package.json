@@ -1,6 +1,9 @@
 {
   "name": "face_authorize_node",
   "version": "1.0.0",
+  "engines": {
+    "node": "7.2.1"
+  },
   "description": "Simple face recognition with Node.JS",
   "main": "app.js",
   "scripts": {
