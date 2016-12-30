@@ -33,7 +33,7 @@ router.post('/upload', upload.single('auth-face'), function(req, res) {
  var trainData = [];
  for(var i = 1;i<9;i++)
  {
-   cv.readImage("/Users/Rahul/Google Drive/Personal_Projects/face_authorize_node/controllers/train/" + i + ".jpg",function(err,im){
+   cv.readImage(__dirname + '/../train/' + i + ".jpg",function(err,im){
      //im.convertGrayscale();
      //im.save("/Users/Rahul/Desktop/train/g" + i + ".pgm");
      im.cvtColor("CV_BGR2GRAY");
