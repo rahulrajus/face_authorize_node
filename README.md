@@ -12,7 +12,7 @@ Start server:
 ```
  node app.js
 ``` 
-POST image with key "auth-face" to http://127.0.0.1:/users/upload/
+POST image with key "auth-face" to http://127.0.0.1:3000/users/upload/
 Response format-
 ``` 
 {
